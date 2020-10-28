@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Sprites/mockcard.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/stan2.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/Card.gd" type="Script" id=3]
+
+[node name="Card" type="TextureRect"]
+anchor_left = 0.735702
+anchor_top = 0.799536
+anchor_right = 0.735702
+anchor_bottom = 0.799536
+margin_left = -212.0
+margin_top = -346.0
+margin_right = 188.0
+margin_bottom = 254.0
+texture = ExtResource( 1 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": true
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = 130.167
+margin_top = 50.0
+margin_right = 530.167
+margin_bottom = 850.0
+rect_scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 130.167
+margin_top = 383.406
+margin_right = 180.167
+margin_bottom = 397.406
+rect_scale = Vector2( 3, 3 )
+text = "Move 4"
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="gui_input" from="." to="." method="_on_Card_gui_input"]
