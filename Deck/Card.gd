@@ -10,10 +10,7 @@ onready var bottom_margin:=  rect_size/2
 enum{
 	InHand
 	InPlay
-	FocusedInHand
-	MovingToContainer
-	Reorganizing
-	PushedAside
+	AboutToBePlayed
 }
 var state := InHand
 var start_position: Vector2
@@ -27,6 +24,7 @@ func _ready():
 
 
 func recalculatePosition():
+	self.rect_position = Vector2(self.get_position().x + 1000,self.get_position().y)
 	pass
 
 func _on_Card_gui_input(event):
@@ -38,6 +36,11 @@ func _on_Card_gui_input(event):
 		else: 
 			drag_position = null
 			self.rect_position = position_before_drag
+			if state == AboutToBePlayed:
+				var parent:Node = self.get_parent()
+				parent.remove_child(self)
+				parent.reorganize_scroll_hand()
+				self.queue_free()
 	
 	if event is InputEventMouseMotion and drag_position:
 		rect_global_position = get_global_mouse_position() - drag_position
@@ -45,10 +48,12 @@ func _on_Card_gui_input(event):
 			var node_new_style = self.get_stylebox("panel").duplicate()
 			node_new_style.set_border_color(Color("#29be05"))
 			self.add_stylebox_override("panel", node_new_style)
+			state = AboutToBePlayed
 		else:
 			var node_new_style = self.get_stylebox("panel").duplicate()
 			node_new_style.set_border_color(Color("000"))
 			self.add_stylebox_override("panel", node_new_style)
+			state = InHand
 			
 
 
