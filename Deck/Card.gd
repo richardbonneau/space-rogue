@@ -3,13 +3,31 @@ extends Panel
 var drag_position = null
 var position_before_drag = null
 
+export var neighbour_push: =0.75
+onready var hand_width_margin := rect_size.x * 2
+onready var bottom_margin:=  rect_size/2
 
+enum{
+	InHand
+	InPlay
+	FocusedInHand
+	MovingToContainer
+	Reorganizing
+	PushedAside
+}
+var state := InHand
+var start_position: Vector2
+var target_position: Vector2
+var focus_completed: bool = false
 
 func _ready():
 	position_before_drag = self.rect_position
-	
+	recalculatePosition()
 
 
+
+func recalculatePosition():
+	pass
 
 func _on_Card_gui_input(event):
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT:
