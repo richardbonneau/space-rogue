@@ -19,19 +19,16 @@ var focus_completed: bool = false
 
 func _ready():
 	position_before_drag = self.rect_position
-	recalculatePosition()
 
 
 
-func recalculatePosition():
-	self.rect_position = Vector2(self.get_position().x + 1000,self.get_position().y)
-	pass
 
 func _on_Card_gui_input(event):
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT:
 		if event.pressed:
 			print("pressed")
 			drag_position = get_global_mouse_position() - rect_global_position
+			position_before_drag = self.rect_position
 			get_owner().held_object = self
 		else: 
 			drag_position = null
@@ -51,7 +48,7 @@ func _on_Card_gui_input(event):
 			state = AboutToBePlayed
 		else:
 			var node_new_style = self.get_stylebox("panel").duplicate()
-			node_new_style.set_border_color(Color("000"))
+			node_new_style.set_border_color(Color("fff"))
 			self.add_stylebox_override("panel", node_new_style)
 			state = InHand
 			
