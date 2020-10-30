@@ -29,7 +29,7 @@ func _on_Card_gui_input(event):
 			print("pressed")
 			drag_position = get_global_mouse_position() - rect_global_position
 			position_before_drag = self.rect_position
-			get_owner().held_object = self
+			#get_owner().held_object = self
 		else: 
 			drag_position = null
 			self.rect_position = position_before_drag
