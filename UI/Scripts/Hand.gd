@@ -27,9 +27,16 @@ func reorganize_hand():
 	
 	var middle_of_hand = hand_container_width / 2
 	
-	for card in cards_in_hand:
+	var a = middle_of_hand - total_hand_width / 2
+	for i in cards_in_hand.size():
+		cards_in_hand[i].set_position(Vector2((i * card_width)+a,0))
 		
-		card.set_position(Vector2(middle_of_hand - card_width / 2,0))
+		
+		
+		
+		
+		
+		
 	
 	# center cards
 	# make space to display all cards
