@@ -1,0 +1,14 @@
+[gd_scene format=2]
+
+[node name="Button" type="Button"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -37.1726
+margin_top = 12.4726
+margin_right = 31.8274
+margin_bottom = 32.4726
+rect_scale = Vector2( 2, 2 )
+text = "Add Card"
+__meta__ = {
+"_edit_use_anchors_": false
+}

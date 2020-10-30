@@ -2,15 +2,30 @@
 
 [ext_resource path="res://Sprites/mockcard.png" type="Texture" id=1]
 [ext_resource path="res://Sprites/stan2.png" type="Texture" id=2]
-[ext_resource path="res://Deck/Card.gd" type="Script" id=3]
-[ext_resource path="res://Deck/CardStyleBox.tres" type="StyleBox" id=4]
+[ext_resource path="res://UI/Scripts/Card.gd" type="Script" id=3]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.145098, 0.184314, 0.219608, 1 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0, 0, 0, 1 )
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color( 0, 0, 0, 0.113725 )
+shadow_size = 2
+shadow_offset = Vector2( 2, -1 )
 
 [node name="Card" type="Panel"]
 margin_right = 125.0
 margin_bottom = 182.5
 rect_min_size = Vector2( 125, 182.5 )
 mouse_default_cursor_shape = 6
-custom_styles/panel = ExtResource( 4 )
+custom_styles/panel = SubResource( 1 )
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false

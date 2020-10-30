@@ -36,7 +36,7 @@ func _on_Card_gui_input(event):
 			if state == AboutToBePlayed:
 				var parent:Node = self.get_parent()
 				parent.remove_child(self)
-				parent.reorganize_scroll_hand()
+				parent.reorganize_hand()
 				self.queue_free()
 	
 	if event is InputEventMouseMotion and drag_position:

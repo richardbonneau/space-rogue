@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Level/Tile.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Player.tscn" type="PackedScene" id=2]
+
+[sub_resource type="Environment" id=1]
+tonemap_mode = 3
 
 [node name="GameBoard" type="Spatial"]
 
@@ -188,3 +191,11 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 1, -6 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 68, 0 )
+light_color = Color( 1, 0.972549, 0.698039, 1 )
+light_energy = 1.5
