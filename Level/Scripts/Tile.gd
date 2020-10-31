@@ -4,7 +4,7 @@ onready var neighbors = []
 
 func _ready():
 	pass
-	#print("above", $Rays/Above.get_collider())
+
 
 
 
@@ -17,10 +17,11 @@ func get_neighbors():
 	get_single_neighbor($Rays/South)
 	get_single_neighbor($Rays/East)
 	get_single_neighbor($Rays/West)
-	print(neighbors)
-	
+
 
 func get_single_neighbor(var ray):
 	if ray.is_colliding(): 
-		self.neighbors.append(ray.get_collider())
+		var collider = ray.get_collider()
+		self.neighbors.append(collider)
+		collider.get_node("Highlight").visible = true
 	
