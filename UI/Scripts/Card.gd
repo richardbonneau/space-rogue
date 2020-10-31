@@ -36,12 +36,13 @@ func _on_Card_gui_input(event):
 			if state == AboutToBePlayed:
 				var parent:Node = self.get_parent()
 				parent.remove_child(self)
-				parent.reorganize_hand()
+				parent.get_parent().reorganize_hand()
 				self.queue_free()
 	
 	if event is InputEventMouseMotion and drag_position:
+		print(get_global_mouse_position())
 		rect_global_position = get_global_mouse_position() - drag_position
-		if rect_global_position.y < 900:
+		if rect_global_position.y < 400:
 			var node_new_style = self.get_stylebox("panel").duplicate()
 			node_new_style.set_border_color(Color("#29be05"))
 			self.add_stylebox_override("panel", node_new_style)
