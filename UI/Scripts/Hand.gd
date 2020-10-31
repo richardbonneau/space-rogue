@@ -1,6 +1,6 @@
 extends Control
 
-
+var ready_to_resize:bool = false
 var held_object = null
 
 onready var card = load("res://UI/Card.tscn")
@@ -11,6 +11,8 @@ func _ready():
 	var temp_card = card.instance()
 	card_width = temp_card.get_size().x
 	temp_card.queue_free()
+	
+	ready_to_resize = true
 	
 	reorganize_hand()
 	
@@ -66,3 +68,10 @@ func _on_Add_Card_Button_pressed():
 	var new_card = card.instance()
 	$Container.add_child(new_card)
 	reorganize_hand()
+
+
+
+
+
+func _on_ViewPort_resized():
+	if ready_to_resize : reorganize_hand()
