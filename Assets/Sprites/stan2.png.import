@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/stan2.png-3259fdd02bfe96ba7e7421d8e0b60a73.stex"
+path="res://.import/stan2.png-ee5748915fa1f9a6fd43fd7c74a063d4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/stan2.png"
-dest_files=[ "res://.import/stan2.png-3259fdd02bfe96ba7e7421d8e0b60a73.stex" ]
+source_file="res://Assets/Sprites/stan2.png"
+dest_files=[ "res://.import/stan2.png-ee5748915fa1f9a6fd43fd7c74a063d4.stex" ]
 
 [params]
 

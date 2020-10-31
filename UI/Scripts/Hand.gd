@@ -42,15 +42,6 @@ func reorganize_hand():
 		cards_in_hand[i].set_position(Vector2((card_position_x) + distance_to_cover_to_get_to_middle ,0))
 
 
-
-
-
-
-
-
-
-
-
 func _on_ViewPort_resized():
 	if ready_to_resize : reorganize_hand()
 

@@ -1,8 +1,9 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Sprites/mockcard.png" type="Texture" id=1]
-[ext_resource path="res://Sprites/stan2.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Sprites/mockcard.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Sprites/stan2.png" type="Texture" id=2]
 [ext_resource path="res://UI/Scripts/Card.gd" type="Script" id=3]
+
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.145098, 0.184314, 0.219608, 1 )

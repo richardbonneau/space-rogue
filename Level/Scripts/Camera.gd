@@ -1,7 +1,7 @@
 extends Camera
 
 
-var enable_debug_tile_clicks = false
+var enable_debug_tile_clicks = true
 
 func _ready():
 	pass # Replace with function body.
@@ -14,8 +14,10 @@ func _input(event):
 		# TODO: Make sure it only hits tiles, by using either groups or mask/colliders
 		var space_state = get_world().direct_space_state
 		
-		var clicked_collider = space_state.intersect_ray(from, to, [], 1).get("collider")
-		if clicked_collider:
-			clicked_collider.logic()
+		var clicked_node = space_state.intersect_ray(from, to, [], 1).get("collider")
+		if clicked_node:
+			clicked_node.get_node("Highlight").visible = true
+			var game_board = self.get_owner().get_owner().get_node("GameBoard")
+			game_board.destination_origin = clicked_node.get_global_transform().origin
 
 

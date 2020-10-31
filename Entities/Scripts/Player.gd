@@ -3,7 +3,7 @@ extends Spatial
 var current_tile
 
 func _ready():
-	get_current_tile()
+	pass
 
 
 
@@ -14,4 +14,3 @@ func get_current_tile():
 	
 	#print($Mesh/CurrentTile.get_collider().name)
 	
-

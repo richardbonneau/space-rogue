@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/mockcard.png-da257f210227438b7eea2582300cead7.stex"
+path="res://.import/mockcard.png-d84936e7b69623fd30367bfd50e9469e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/mockcard.png"
-dest_files=[ "res://.import/mockcard.png-da257f210227438b7eea2582300cead7.stex" ]
+source_file="res://Assets/Sprites/mockcard.png"
+dest_files=[ "res://.import/mockcard.png-d84936e7b69623fd30367bfd50e9469e.stex" ]
 
 [params]
 

@@ -2,12 +2,11 @@ extends Panel
 
 var drag_position = null
 onready var position_before_drag = self.rect_position
-onready var game_board = self.get_owner().get_owner().get_node("GameBoard")
 export var neighbour_push: =0.75
 onready var hand_width_margin := rect_size.x * 2
 onready var bottom_margin:=  rect_size/2
 
-enum{
+enum {
 	InHand
 	InPlay
 	AboutToBePlayed
@@ -17,12 +16,8 @@ var start_position: Vector2
 var target_position: Vector2
 var focus_completed: bool = false
 
-
-
 func _ready():
 	pass
-
-
 
 
 func _on_Card_gui_input(event):
@@ -35,7 +30,8 @@ func _on_Card_gui_input(event):
 			self.rect_position = position_before_drag
 			if state == AboutToBePlayed:
 				#play card
-				game_board.enable_entity_movement_grid()
+				var game_board = self.get_owner().get_owner().get_node("GameBoard")
+				game_board.play_card({"type": "move", "value": 1})
 				
 				var parent:Node = self.get_parent()
 				parent.remove_child(self)

@@ -11,7 +11,7 @@ rim_enabled = true
 rim = 1.0
 rim_tint = 0.6
 
-[node name="Player" type="Spatial"]
+[node name="Player" type="KinematicBody"]
 script = ExtResource( 1 )
 
 [node name="Mesh" type="MeshInstance" parent="."]
