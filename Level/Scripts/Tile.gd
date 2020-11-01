@@ -1,27 +1,34 @@
 extends StaticBody
 
-onready var neighbors = []
+var parent
+var h_cost
+var g_cost
+
+
 
 func _ready():
 	pass
+	
 
-
-
+func get_f_cost():
+	return h_cost + g_cost
 
 func logic():
-	if self.neighbors.empty():
-		get_neighbors()
+	if self.neighbours.empty():
+		get_neighbours()
 
-func get_neighbors():
-	get_single_neighbor($Rays/North)
-	get_single_neighbor($Rays/South)
-	get_single_neighbor($Rays/East)
-	get_single_neighbor($Rays/West)
+func get_neighbours():
+	var neighbours:Array = []
+	neighbours.append(get_single_neighbour($Rays/North))
+	neighbours.append(get_single_neighbour($Rays/South))
+	neighbours.append(get_single_neighbour($Rays/East))
+	neighbours.append(get_single_neighbour($Rays/West))
+	return neighbours
 
 
-func get_single_neighbor(var ray):
+func get_single_neighbour(var ray):
 	if ray.is_colliding(): 
 		var collider = ray.get_collider()
-		self.neighbors.append(collider)
-		collider.get_node("Highlight").visible = true
+		return collider
+		#collider.get_node("Highlight").visible = true
 	

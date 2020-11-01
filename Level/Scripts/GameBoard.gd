@@ -40,7 +40,7 @@ func start_moving_entity(destTile):
 	var entity_tile_origin = moving_entity.get_current_tile().get_global_transform().origin
 	destination_origin = destTile.get_global_transform().origin
 	
-	print($Pathfinder.get_movement_cost_to_destination(entity_tile_origin, destination_origin))
+	print($Pathfinder.get_distance(entity_tile_origin, destination_origin))
 	entity_is_moving = true
 
 func _done_moving():
