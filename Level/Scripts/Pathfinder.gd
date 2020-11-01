@@ -1,16 +1,20 @@
 extends Node
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	pass 
+
+func get_movement_cost_to_destination(var tileA, var tileB):
+	#Get H value
+	var dstX = abs(tileA.x - tileB.x)
+	var dstZ = abs(tileA.z - tileB.z)
+	print("dstX ",dstX," dstZ ",dstZ, " tileA.x ",tileA," tileB ",tileB)
+	
+	if dstX > dstZ:
+		return 14 * dstZ + 10 * (dstX - dstZ)
+	else:
+		return 14 * dstX + 10 * (dstZ - dstX)
+	
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass

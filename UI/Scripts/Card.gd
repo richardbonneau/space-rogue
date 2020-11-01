@@ -29,7 +29,6 @@ func _on_Card_gui_input(event):
 			drag_position = null
 			self.rect_position = position_before_drag
 			if state == AboutToBePlayed:
-				#play card
 				var game_board = self.get_owner().get_owner().get_node("GameBoard")
 				game_board.play_card({"type": "move", "value": 1})
 				

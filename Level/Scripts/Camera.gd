@@ -1,7 +1,7 @@
 extends Camera
 
 
-var enable_debug_tile_clicks = true
+var enable_debug_tile_clicks = false
 
 func _ready():
 	pass # Replace with function body.
@@ -18,6 +18,7 @@ func _input(event):
 		if clicked_node:
 			clicked_node.get_node("Highlight").visible = true
 			var game_board = self.get_owner().get_owner().get_node("GameBoard")
-			game_board.destination_origin = clicked_node.get_global_transform().origin
+			game_board.start_moving_entity(clicked_node)
+
 
 
