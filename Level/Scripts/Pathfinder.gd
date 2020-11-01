@@ -4,7 +4,6 @@ func _ready():
 	pass 
 
 func get_distance(var tile_a, var tile_b):
-	#print("tile_a ",tile_a," tile_a ",tile_a)
 	var tile_a_origin = tile_a.get_global_transform().origin
 	var tile_b_origin = tile_b.get_global_transform().origin
 	var dst_x = abs(tile_a_origin.x - tile_b_origin.x)
@@ -16,7 +15,6 @@ func get_distance(var tile_a, var tile_b):
 		return 14 * dst_x + 10 * (dst_z - dst_x)
 
 
-
 func find_path(var start_tile, var dest_tile):
 	var open_nodes:Array = []
 	var closed_nodes:Array = []
@@ -25,7 +23,6 @@ func find_path(var start_tile, var dest_tile):
 	while(open_nodes.size() > 0):
 		var lowest_cost_node = open_nodes[0]
 		for node in open_nodes:
-			#print("node.get_f_cost() ",node.get_f_cost()," lowest_cost_node.get_f_cost() ",lowest_cost_node.get_f_cost())
 			if node.get_f_cost() <= lowest_cost_node.get_f_cost() and node.h_cost < lowest_cost_node.h_cost:
 				lowest_cost_node = node
 		

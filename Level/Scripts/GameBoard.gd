@@ -22,13 +22,12 @@ func _process(delta):
 
 func play_card(var card_attributes):
 	if card_attributes.type == "move":
-		$Camera.enable_debug_tile_clicks = true
+		$Camera.player_select_tile_for_movement = true
 
 func start_moving_entity(destTile):
-	$Camera.enable_debug_tile_clicks = false
+	$Camera.player_select_tile_for_movement = false
 	destination_tile = destTile
 	var entity_tile = moving_entity.get_current_tile()
-	var entity_tile_origin = entity_tile.get_global_transform().origin
 	destination_origin = destTile.get_global_transform().origin
 	
 	path = $Pathfinder.find_path(entity_tile, destTile)
@@ -53,7 +52,7 @@ func moving_entity(delta):
 
 
 func _done_moving():
-	$Camera.enable_debug_tile_clicks = false
+	$Camera.player_select_tile_for_movement = false
 	$Camera.clear_highlighted_path()
 	entity_is_moving = false
 	moving_entity.set_global_transform(destination_tile.get_global_transform())

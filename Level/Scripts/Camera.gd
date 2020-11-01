@@ -1,12 +1,12 @@
 extends Camera
 
 onready var game_board = self.get_owner().get_owner().get_node("GameBoard")
-var enable_debug_tile_clicks = false
+var player_select_tile_for_movement = false
 var current_focused_node
 var path:Array
 
 func _ready():
-	pass # Replace with function body.
+	pass 
 
 func clear_highlighted_path():
 	for tile in path:
@@ -14,7 +14,7 @@ func clear_highlighted_path():
 
 
 func _input(event):
-	if enable_debug_tile_clicks:
+	if player_select_tile_for_movement:
 		var tap = get_viewport().get_mouse_position()
 		var from = self.project_ray_origin(tap)
 		var to = from + self.project_ray_normal(tap) * 10000
