@@ -35,27 +35,42 @@ material/0 = SubResource( 5 )
 
 [node name="Rays" type="Spatial" parent="."]
 
-[node name="Above" type="RayCast" parent="Rays"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0 )
-enabled = true
-cast_to = Vector3( 0, 1.5, 0 )
-
 [node name="North" type="RayCast" parent="Rays"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -2 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -1 )
+enabled = true
+cast_to = Vector3( 0, -10, 0 )
+
+[node name="NorthEast" type="RayCast" parent="Rays"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 5, -1 )
+enabled = true
+cast_to = Vector3( 0, -10, 0 )
+
+[node name="NorthWest" type="RayCast" parent="Rays"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 5, -1 )
 enabled = true
 cast_to = Vector3( 0, -10, 0 )
 
 [node name="South" type="RayCast" parent="Rays"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 2 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 1 )
+enabled = true
+cast_to = Vector3( 0, -10, 0 )
+
+[node name="SouthEast" type="RayCast" parent="Rays"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 5, 1 )
+enabled = true
+cast_to = Vector3( 0, -10, 0 )
+
+[node name="SouthWest" type="RayCast" parent="Rays"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 5, 1 )
 enabled = true
 cast_to = Vector3( 0, -10, 0 )
 
 [node name="East" type="RayCast" parent="Rays"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 5, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 5, 0 )
 enabled = true
 cast_to = Vector3( 0, -10, 0 )
 
 [node name="West" type="RayCast" parent="Rays"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 5, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 5, 0 )
 enabled = true
 cast_to = Vector3( 0, -10, 0 )
