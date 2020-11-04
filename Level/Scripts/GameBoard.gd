@@ -11,13 +11,14 @@ onready var destination_origin = moving_entity.get_global_transform().origin
 
 var path
 onready var path_index = 0
+var last_entity_rotation
 
 func _ready():
 	pass
 
 
 func _process(delta):
-	if entity_is_moving: moving_entity(delta)
+	if entity_is_moving: move_entity(delta)
 
 
 func play_card(var card_attributes):
@@ -26,6 +27,7 @@ func play_card(var card_attributes):
 
 func start_moving_entity(destTile):
 	$Camera.player_select_tile_for_movement = false
+	moving_entity.get_node("AnimationPlayer").play("Rifle Run")
 	destination_tile = destTile
 	var entity_tile = moving_entity.get_current_tile()
 	destination_origin = destTile.get_global_transform().origin
@@ -33,13 +35,16 @@ func start_moving_entity(destTile):
 	path = $Pathfinder.find_path(entity_tile, destTile)
 	entity_is_moving = true
 
-func moving_entity(delta):
+func move_entity(delta):
 	entity_origin = moving_entity.get_global_transform().origin
 	var next_tile_origin = path[path_index].get_global_transform().origin
 	var offset = next_tile_origin  - entity_origin
 	var distance_to_destination = offset.length()
 	var move_speed = 500
+	moving_entity.look_at(next_tile_origin, Vector3(0,1,0))
 	moving_entity.move_and_slide(offset.normalized() * move_speed * delta)
+	
+	last_entity_rotation = moving_entity.get_rotation()
 	
 	if distance_to_destination < movement_stop_thresold:
 		#print(path_index < path.size() - 1)
@@ -54,6 +59,8 @@ func moving_entity(delta):
 func _done_moving():
 	$Camera.player_select_tile_for_movement = false
 	$Camera.clear_highlighted_path()
+	moving_entity.get_node("AnimationPlayer").play("Rifle Idle")
+	moving_entity.set_rotation(last_entity_rotation)
 	entity_is_moving = false
 	moving_entity.set_global_transform(destination_tile.get_global_transform())
 	path = null

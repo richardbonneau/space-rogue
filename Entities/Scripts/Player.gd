@@ -7,8 +7,10 @@ func _ready():
 
 
 func get_current_tile():
-	if $Mesh/CurrentTile.is_colliding():
-		current_tile = $Mesh/CurrentTile.get_collider()
+	print("$CurrentTile.is_colliding() ",$CurrentTile.is_colliding())
+	if $CurrentTile.is_colliding():
+		current_tile = $CurrentTile.get_collider()
+		print(current_tile)
 		return current_tile
 	
 

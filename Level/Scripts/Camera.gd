@@ -32,6 +32,7 @@ func _input(event):
 			current_focused_node = hovered_node
 			
 			var player_node = game_board.get_node("Player").get_current_tile()
+			print("player_node ",player_node," hovered_node ",hovered_node)
 			path = game_board.get_node("Pathfinder").find_path(player_node,hovered_node)
 			for tile in path:
 				tile.get_node("Highlight").visible = true
