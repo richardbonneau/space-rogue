@@ -8,6 +8,8 @@ var path:Array
 func _ready():
 	pass 
 
+
+
 func clear_highlighted_path():
 	for tile in path:
 		tile.get_node("Highlight").visible = false
