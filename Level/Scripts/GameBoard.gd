@@ -40,11 +40,11 @@ func move_entity(delta):
 	var next_tile_origin = path[path_index].get_global_transform().origin
 	var offset = next_tile_origin  - entity_origin
 	var distance_to_destination = offset.length()
-	var move_speed = 500
+	var move_speed = 250
 	moving_entity.look_at(next_tile_origin, Vector3(0,1,0))
 	moving_entity.move_and_slide(offset.normalized() * move_speed * delta)
 	
-	last_entity_rotation = moving_entity.get_rotation()
+	last_entity_rotation = Vector3(0,moving_entity.get_rotation().y,0)
 	
 	if distance_to_destination < movement_stop_thresold:
 		#print(path_index < path.size() - 1)

@@ -16,6 +16,7 @@ func _process(delta):
 	
 
 func camera_movement(var delta):
+	#Move Camera
 	var screen_edge_threshold = 10
 	var screen_scroll_speed = 5
 	var mouse_pos = get_viewport().get_mouse_position()
@@ -33,3 +34,19 @@ func camera_movement(var delta):
 	
 	move_vec = move_vec.rotated(Vector3(0,1,0),rotation_degrees.y).normalized()
 	global_translate(move_vec * delta * screen_scroll_speed)
+	
+
+func _input(event):
+	if event is InputEventMouseButton:
+		event as InputEventMouseButton
+		
+		if event.pressed:
+			var current_pos = self.get_translation()
+			match event.button_index:
+				BUTTON_WHEEL_UP:
+					set_translation(Vector3(current_pos.x,current_pos.y - .2 , current_pos.z))
+					
+				BUTTON_WHEEL_DOWN:
+					set_translation(Vector3(current_pos.x,current_pos.y + .2 , current_pos.z))
+				
+	
