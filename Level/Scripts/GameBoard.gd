@@ -27,7 +27,7 @@ func play_card(var card_attributes):
 
 func start_moving_entity(destTile):
 	$CameraHolder/Camera.player_select_tile_for_movement = false
-	moving_entity.get_node("AnimationPlayer").play("Rifle Run")
+	moving_entity.get_node("AnimationPlayer").play("Running")
 	destination_tile = destTile
 	var entity_tile = moving_entity.get_current_tile()
 	destination_origin = destTile.get_global_transform().origin
@@ -59,7 +59,7 @@ func move_entity(delta):
 func _done_moving():
 	$CameraHolder/Camera.player_select_tile_for_movement = false
 	$CameraHolder/Camera.clear_highlighted_path()
-	moving_entity.get_node("AnimationPlayer").play("Rifle Idle")
+	moving_entity.get_node("AnimationPlayer").play("Standing Idle")
 	moving_entity.set_rotation(last_entity_rotation)
 	entity_is_moving = false
 	moving_entity.set_global_transform(destination_tile.get_global_transform())
