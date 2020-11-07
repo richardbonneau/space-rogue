@@ -31,8 +31,7 @@ func camera_movement(var delta):
 		
 		var offset = player_origin - camera_origin
 		var distance_between_camera_and_player = offset.length()
-		
-		if distance_between_camera_and_player < 12: translation += move_vec * delta * screen_scroll_speed
+		if distance_between_camera_and_player < 22: translation += move_vec * delta * screen_scroll_speed
 		else : self.global_translate(offset.normalized() * screen_scroll_speed * delta)
 		
 		

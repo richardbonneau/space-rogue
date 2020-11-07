@@ -8,8 +8,8 @@ onready var bottom_margin:=  rect_size/2
 
 enum {
 	InHand
-	InPlay
 	AboutToBePlayed
+	InPlay
 }
 var state := InHand
 var start_position: Vector2
@@ -29,9 +29,11 @@ func _on_Card_gui_input(event):
 			drag_position = null
 			self.rect_position = position_before_drag
 			if state == AboutToBePlayed:
-				var game_board = self.get_owner().get_owner().get_node("GameBoard")
-				game_board.play_card({"type": "move", "value": 1})
+				state = InPlay
+				var pathfinder = self.get_owner().get_owner().get_node("GameBoard").get_node("Pathfinder")
+				pathfinder.play_card({"type": "move", "value": 1})
 				
+				#TODO: Drag and drop cards directly to the battlefield
 				var parent:Node = self.get_parent()
 				parent.remove_child(self)
 				parent.get_parent().reorganize_hand()

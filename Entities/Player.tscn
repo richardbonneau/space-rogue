@@ -899,7 +899,7 @@ tracks/33/imported = true
 tracks/33/enabled = true
 tracks/33/keys = PoolRealArray( 0, 1, 0.000991847, 0.0200048, -0.0561296, -0.0465126, -0.023087, 0.00709709, 0.998626, 1, 1, 1, 0.0666667, 1, 0.000991847, 0.0200048, -0.0561296, -0.0465126, -0.023087, 0.00709709, 0.998626, 1, 1, 1 )
 
-[node name="rifle-run" type="KinematicBody"]
+[node name="Player" type="KinematicBody"]
 script = ExtResource( 1 )
 
 [node name="CurrentTile" type="RayCast" parent="."]

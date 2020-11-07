@@ -1,6 +1,7 @@
 extends Camera
 
 onready var game_board = self.get_owner().get_owner().get_node("GameBoard")
+onready var pathfinder = game_board.get_node("Pathfinder")
 var player_select_tile_for_movement = false
 var current_focused_node
 var path:Array
@@ -20,7 +21,6 @@ func _input(event):
 		var tap = get_viewport().get_mouse_position()
 		var from = self.project_ray_origin(tap)
 		var to = from + self.project_ray_normal(tap) * 10000
-		# TODO: Make sure it only hits tiles, by using either groups or mask/colliders
 		var space_state = get_world().direct_space_state
 		
 		var hovered_node = space_state.intersect_ray(from, to, [], 1).get("collider")
@@ -39,7 +39,7 @@ func _input(event):
 			for tile in path:
 				tile.get_node("Highlight").visible = true
 		if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.is_pressed():
-			game_board.start_moving_entity(hovered_node)
+			if hovered_node: pathfinder.start_moving_entity(hovered_node)
 
 
 
