@@ -4,7 +4,6 @@
 [ext_resource path="res://Assets/Sprites/stan2.png" type="Texture" id=2]
 [ext_resource path="res://UI/Scripts/Card.gd" type="Script" id=3]
 
-
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.145098, 0.184314, 0.219608, 1 )
 border_width_left = 5
@@ -53,6 +52,9 @@ margin_top = -0.0159659
 margin_bottom = -0.0159683
 texture = ExtResource( 2 )
 expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label" type="Label" parent="."]
 anchor_top = 0.697

@@ -1,22 +1,31 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://UI/Card.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Sprites/burning-card-tp.png" type="Texture" id=2]
 [ext_resource path="res://UI/Scripts/Hand.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Sprites/discard-card-tp.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Sprites/boot.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Sprites/energy.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Sprites/lozange.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Sprites/pendant.png" type="Texture" id=8]
 
 [node name="Hand" type="Control"]
-anchor_top = 1.0
-anchor_right = 1.0
+anchor_right = 1.018
 anchor_bottom = 1.0
+margin_top = 1.10907
+margin_right = -24.588
+margin_bottom = -0.89093
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Container" type="ColorRect" parent="."]
-anchor_top = 0.845
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -182.0
+margin_left = 1.68179
+margin_top = 580.0
+margin_right = 1.68176
 size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0, 0, 0, 1 )
@@ -83,4 +92,136 @@ margin_left = 897.0
 margin_top = -0.729431
 margin_right = 1022.0
 margin_bottom = 181.771
+
+[node name="UsedCards" type="VBoxContainer" parent="."]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = 60.0
+margin_right = 97.0
+margin_bottom = 150.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BurnedPile" type="HBoxContainer" parent="UsedCards"]
+margin_right = 72.0
+margin_bottom = 60.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Icon" type="TextureRect" parent="UsedCards/BurnedPile"]
+margin_right = 60.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 60, 60 )
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 1
+
+[node name="Label" type="Label" parent="UsedCards/BurnedPile"]
+margin_left = 64.0
+margin_top = 23.0
+margin_right = 72.0
+margin_bottom = 37.0
+text = "0"
+
+[node name="DiscardedPile" type="HBoxContainer" parent="UsedCards"]
+margin_top = 64.0
+margin_right = 97.0
+margin_bottom = 124.0
+
+[node name="Icon" type="TextureRect" parent="UsedCards/DiscardedPile"]
+margin_right = 60.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 60, 60 )
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 1
+
+[node name="Label" type="Label" parent="UsedCards/DiscardedPile"]
+margin_left = 64.0
+margin_top = 23.0
+margin_right = 72.0
+margin_bottom = 37.0
+text = "0"
+
+[node name="PlayerActions" type="VBoxContainer" parent="."]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -85.0
+margin_top = 60.0
+margin_bottom = 150.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Movement" type="HBoxContainer" parent="PlayerActions"]
+margin_right = 149.0
+margin_bottom = 60.0
+
+[node name="Label" type="Label" parent="PlayerActions/Movement"]
+margin_top = 23.0
+margin_right = 21.0
+margin_bottom = 37.0
+text = "6/6"
+
+[node name="Icon" type="TextureRect" parent="PlayerActions/Movement"]
+margin_left = 25.0
+margin_right = 85.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 60, 60 )
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 1
+
+[node name="Energy" type="HBoxContainer" parent="PlayerActions"]
+margin_top = 64.0
+margin_right = 149.0
+margin_bottom = 124.0
+
+[node name="Label" type="Label" parent="PlayerActions/Energy"]
+margin_top = 23.0
+margin_right = 21.0
+margin_bottom = 37.0
+text = "2/2"
+
+[node name="Icon" type="TextureRect" parent="PlayerActions/Energy"]
+margin_left = 25.0
+margin_right = 85.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 60, 60 )
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 1
+
+[node name="Relics" type="VBoxContainer" parent="."]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -60.0
+margin_top = -200.0
+margin_bottom = -170.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Icon2" type="TextureRect" parent="Relics"]
+margin_right = 60.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 60, 60 )
+texture = ExtResource( 8 )
+expand = true
+stretch_mode = 1
+
+[node name="Icon3" type="TextureRect" parent="Relics"]
+margin_top = 64.0
+margin_right = 60.0
+margin_bottom = 124.0
+rect_min_size = Vector2( 60, 60 )
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 1
 [connection signal="resized" from="." to="." method="_on_ViewPort_resized"]
