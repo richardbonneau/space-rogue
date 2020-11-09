@@ -1,62 +1,15 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=2 format=2]
 
 [ext_resource path="res://UI/Scripts/TurnOrder.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
 
-[node name="TurnOrder" type="Control"]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -675.0
-margin_right = 676.0
-margin_bottom = 114.0
-script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="EntitiesOnGameBoard" type="HBoxContainer" parent="."]
+[node name="TurnOrder" type="HBoxContainer"]
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -683.0
 margin_right = 683.0
 margin_bottom = 5.0
 alignment = 1
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="TextureRect" type="TextureRect" parent="EntitiesOnGameBoard"]
-margin_left = 557.0
-margin_right = 617.0
-margin_bottom = 60.0
-rect_min_size = Vector2( 60, 60 )
-texture = ExtResource( 2 )
-expand = true
-stretch_mode = 5
-
-[node name="TextureRect2" type="TextureRect" parent="EntitiesOnGameBoard"]
-margin_left = 621.0
-margin_right = 681.0
-margin_bottom = 60.0
-rect_min_size = Vector2( 60, 60 )
-texture = ExtResource( 2 )
-expand = true
-stretch_mode = 5
-
-[node name="TextureRect3" type="TextureRect" parent="EntitiesOnGameBoard"]
-margin_left = 685.0
-margin_right = 745.0
-margin_bottom = 60.0
-rect_min_size = Vector2( 60, 60 )
-texture = ExtResource( 2 )
-expand = true
-stretch_mode = 5
-
-[node name="TextureRect4" type="TextureRect" parent="EntitiesOnGameBoard"]
-margin_left = 749.0
-margin_right = 809.0
-margin_bottom = 60.0
-rect_min_size = Vector2( 60, 60 )
-texture = ExtResource( 2 )
-expand = true
-stretch_mode = 5

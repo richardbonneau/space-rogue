@@ -17,7 +17,7 @@ func clear_highlighted_path():
 
 
 func _input(event):
-	if player_select_tile_for_movement:
+	if player_select_tile_for_movement and game_board.active_entity:
 		var tap = get_viewport().get_mouse_position()
 		var from = self.project_ray_origin(tap)
 		var to = from + self.project_ray_normal(tap) * 10000
@@ -33,9 +33,8 @@ func _input(event):
 			path = []
 			current_focused_node = hovered_node
 			
-			var player_node = game_board.get_node("Player").get_current_tile()
-			print("player_node ",player_node," hovered_node ",hovered_node)
-			path = game_board.get_node("Pathfinder").find_path(player_node,hovered_node)
+			var moving_entity_node = game_board.active_entity.get_current_tile()
+			path = game_board.get_node("Pathfinder").find_path(moving_entity_node,hovered_node)
 			for tile in path:
 				tile.get_node("Highlight").visible = true
 		if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.is_pressed():

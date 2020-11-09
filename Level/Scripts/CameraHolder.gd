@@ -1,6 +1,7 @@
 extends Spatial
 
-onready var player = self.get_owner().get_owner().get_node("GameBoard").get_node("Player")
+#onready var player = self.get_owner().get_owner().get_node("GameBoard").get_node("Entities").get_node("Player")
+var map_center = Vector3(0,0,0)
 onready var is_key_pressed = false
 
 func _process(delta):
@@ -25,13 +26,11 @@ func camera_movement(var delta):
 			move_vec += transform.basis.x
 		
 		move_vec = move_vec.normalized()
-		var player_origin = player.get_global_transform().origin
 		var camera_origin = self.get_global_transform().origin
-		player_origin = Vector3 (player_origin.x,camera_origin.y,player_origin.z)
 		
-		var offset = player_origin - camera_origin
+		var offset = map_center - camera_origin
 		var distance_between_camera_and_player = offset.length()
-		if distance_between_camera_and_player < 22: translation += move_vec * delta * screen_scroll_speed
+		if distance_between_camera_and_player < 15: translation += move_vec * delta * screen_scroll_speed
 		else : self.global_translate(offset.normalized() * screen_scroll_speed * delta)
 		
 		

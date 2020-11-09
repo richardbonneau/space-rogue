@@ -10,7 +10,7 @@ func _ready():
 
 
 func change_boxes_size():
-	var entities_on_game_board = $EntitiesOnGameBoard.get_children()
+	var entities_on_game_board = self.get_children()
 	for i in entities_on_game_board.size():
 		if i == 0:
 			entities_on_game_board[i].set_custom_minimum_size(Vector2(inactive_entities_size,inactive_entities_size))
