@@ -1,8 +1,5 @@
 extends Node
 
-
-
-
 var destination_tile
 var path
 var last_entity_rotation
