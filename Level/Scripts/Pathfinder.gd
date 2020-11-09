@@ -1,23 +1,19 @@
 extends Node
 
-onready var game_board = get_owner()
 
-var movement_stop_thresold: float = 0.1
+
+
 var destination_tile
 var path
 var last_entity_rotation
-
-
-#onready 
 var entity_origin
-# = moving_entity.get_global_transform().origin
-#onready 
 var destination_origin
-# = moving_entity.get_global_transform().origin
 
+onready var game_board = get_owner()
 onready var entity_is_moving: bool = false
 onready var path_index = 0
 onready var camera = self.get_parent().get_node("CameraHolder").get_child(0)
+onready var movement_stop_thresold: float = 0.1
 
 func _process(delta):
 	if entity_is_moving: move_entity(delta)
