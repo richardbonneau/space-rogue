@@ -58,6 +58,8 @@ func _done_moving():
 	rounds.get_active_entity().set_global_transform(destination_tile.get_global_transform())
 	path = null
 	path_index = 0
+	
+	rounds.next_turn()
 
 
 func get_distance(var tile_a, var tile_b):
@@ -97,7 +99,7 @@ func find_path(var start_tile, var dest_tile):
 		
 		var neighbours = lowest_cost_node.get_neighbours()
 		for neighbour in neighbours:
-			if closed_nodes.has(neighbour): continue
+			if closed_nodes.has(neighbour) or neighbour.taken: continue
 			var new_cost_to_neighbour = lowest_cost_node.g_cost + get_distance(lowest_cost_node,neighbour)
 			var open_nodes_contains_neighbour = open_nodes.has(neighbour)
 			

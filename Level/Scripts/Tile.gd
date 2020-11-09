@@ -4,6 +4,7 @@ var neighbours:Array = []
 var parent
 onready var h_cost = 0
 onready var g_cost= 0
+onready var taken = false
 
 func _ready():
 	pass

@@ -1,7 +1,7 @@
 extends Spatial
 
 onready var rounds = self.get_owner().get_node("Rounds")
-onready var turn_order = self.get_owner().get_owner().get_node("TurnOrder")
+onready var portrait_order = self.get_owner().get_owner().get_node("PortraitOrder")
 
 export(String,"Enemy", "Player") var type
 var current_tile
@@ -18,6 +18,8 @@ func _ready():
 	
 	add_to_turn_order()
 
+
+
 func get_current_tile():
 	if $CurrentTile.is_colliding():
 		current_tile = $CurrentTile.get_collider()
@@ -26,6 +28,6 @@ func get_current_tile():
 
 func add_to_turn_order():
 	rounds.add_entity_to_list(self)
-	turn_order.add_portrait_to_turn_order(type)
+	portrait_order.rearrange_portrait_order()
 
 
