@@ -7,6 +7,7 @@ var entity_origin
 var destination_origin
 
 onready var game_board = get_owner()
+onready var rounds = game_board.get_node("Rounds")
 onready var entity_is_moving: bool = false
 onready var path_index = 0
 onready var camera = self.get_parent().get_node("CameraHolder").get_child(0)
@@ -21,24 +22,24 @@ func play_card(var card_attributes):
 
 func start_moving_entity(destTile):
 	camera.player_select_tile_for_movement = false
-	game_board.active_entity.get_node("AnimationPlayer").play("Running")
+	rounds.get_active_entity().get_node("AnimationPlayer").play("Moving")
 	destination_tile = destTile
-	var entity_tile = game_board.active_entity.get_current_tile()
+	var entity_tile = rounds.get_active_entity().get_current_tile()
 	destination_origin = destTile.get_global_transform().origin
 	
 	path = find_path(entity_tile, destTile)
 	entity_is_moving = true
 
 func move_entity(delta):
-	entity_origin = game_board.active_entity.get_global_transform().origin
+	entity_origin = rounds.get_active_entity().get_global_transform().origin
 	var next_tile_origin = path[path_index].get_global_transform().origin
 	var offset = next_tile_origin  - entity_origin
 	var distance_to_destination = offset.length()
 	var move_speed = 500
-	game_board.active_entity.look_at(next_tile_origin, Vector3(0,1,0))
-	game_board.active_entity.move_and_slide(offset.normalized() * move_speed * delta)
+	rounds.get_active_entity().look_at(next_tile_origin, Vector3(0,1,0))
+	rounds.get_active_entity().move_and_slide(offset.normalized() * move_speed * delta)
 	
-	last_entity_rotation = Vector3(0,game_board.active_entity.get_rotation().y,0)
+	last_entity_rotation = Vector3(0,rounds.get_active_entity().get_rotation().y,0)
 	
 	if distance_to_destination < movement_stop_thresold:
 		
@@ -51,10 +52,10 @@ func move_entity(delta):
 func _done_moving():
 	camera.player_select_tile_for_movement = false
 	camera.clear_highlighted_path()
-	game_board.active_entity.get_node("AnimationPlayer").play("Standing Idle")
-	game_board.active_entity.set_rotation(last_entity_rotation)
+	rounds.get_active_entity().get_node("AnimationPlayer").play("Idle")
+	rounds.get_active_entity().set_rotation(last_entity_rotation)
 	entity_is_moving = false
-	game_board.active_entity.set_global_transform(destination_tile.get_global_transform())
+	rounds.get_active_entity().set_global_transform(destination_tile.get_global_transform())
 	path = null
 	path_index = 0
 
