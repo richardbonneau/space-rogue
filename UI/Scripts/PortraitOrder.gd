@@ -26,7 +26,7 @@ func _ready():
 func rearrange_portrait_order():
 	get_dependencies()
 	for child in self.get_children():
-		print("removing")
+		self.remove_child(child)
 		child.queue_free()
 	
 	var all_entities = rounds.turn_order
@@ -34,7 +34,7 @@ func rearrange_portrait_order():
 		add_portrait_to_turn_order(entity.type)
 	
 	change_boxes_size()
-	print("----")
+
 
 func add_portrait_to_turn_order(var type):
 	var portrait_instance = portrait.instance()
@@ -45,7 +45,7 @@ func add_portrait_to_turn_order(var type):
 	
 	portrait_instance.set_texture(image)
 	self.add_child(portrait_instance)
-	print("adding ")
+
 
 
 
@@ -57,7 +57,6 @@ func remove_portrait_from_turn_order():
 func change_boxes_size():
 	var all_portraits = self.get_children()
 	for i in all_portraits.size():
-		print("all_portraits[i] ",all_portraits[i])
 		if i == 0:
 			all_portraits[i].set_custom_minimum_size(Vector2(inactive_entities_size,inactive_entities_size))
 		else:

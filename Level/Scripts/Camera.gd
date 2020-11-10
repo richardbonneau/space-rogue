@@ -12,10 +12,10 @@ func _ready():
 	pass 
 
 
-
 func clear_highlighted_path():
-	for tile in path:
-		tile.get_node("Highlight").visible = false
+	for tile in game_board.get_node("Tiles").get_children():
+		var highlight = tile.get_node("Highlight")
+		if highlight : highlight.visible = false
 
 
 func _input(event):
@@ -37,10 +37,12 @@ func _input(event):
 			
 			var moving_entity_node = rounds.get_active_entity().get_current_tile()
 			path = pathfinder.find_path(moving_entity_node,hovered_node)
+			moving_entity_node.get_node("Highlight").visible = true
 			for tile in path:
 				tile.get_node("Highlight").visible = true
 		if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.is_pressed():
 			if hovered_node: pathfinder.start_moving_entity(hovered_node)
+
 
 
 

@@ -8,9 +8,11 @@ var destination_origin
 
 onready var game_board = get_owner()
 onready var rounds = game_board.get_node("Rounds")
+onready var player_actions = game_board.get_node("PlayerActions")
+onready var camera = self.get_parent().get_node("CameraHolder").get_child(0)
+
 onready var entity_is_moving: bool = false
 onready var path_index = 0
-onready var camera = self.get_parent().get_node("CameraHolder").get_child(0)
 onready var movement_stop_thresold: float = 0.1
 
 func _process(delta):
@@ -42,7 +44,7 @@ func move_entity(delta):
 	last_entity_rotation = Vector3(0,rounds.get_active_entity().get_rotation().y,0)
 	
 	if distance_to_destination < movement_stop_thresold:
-		
+		player_actions.player_remaining_move -= 1
 		#Switch to next node to move to
 		if path_index < path.size() - 1: 
 			path_index+=1

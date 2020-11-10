@@ -55,7 +55,6 @@ func _on_Card_gui_input(event):
 
 
 func _on_Card_mouse_entered():
-	print("mouse entered")
 	var node_new_style = self.get_stylebox("panel").duplicate()
 	node_new_style.set_border_color(Color("fff"))
 	self.add_stylebox_override("panel", node_new_style)
