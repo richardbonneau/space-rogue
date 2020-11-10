@@ -7,6 +7,7 @@ onready var g_cost= 0
 onready var taken = false
 
 func _ready():
+	is_tile_occupied()
 	pass
 
 func get_f_cost():
@@ -23,3 +24,7 @@ func get_neighbours():
 func get_single_neighbour(var ray):
 	if ray.is_colliding(): return ray.get_collider()
 
+func is_tile_occupied():
+	var ray = $Rays/TileOccupied
+	#print("ray.is_colliding() ",ray.is_colliding())
+	if ray.is_colliding(): print(ray.get_collider())

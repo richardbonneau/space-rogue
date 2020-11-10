@@ -77,10 +77,11 @@ func get_distance(var tile_a, var tile_b):
 
 
 func find_path(var start_tile, var dest_tile):
+	if get_distance(start_tile,dest_tile) > player_actions.player_max_move * 10: return []
+	
 	var open_nodes:Array = []
 	var closed_nodes:Array = []
 	open_nodes.append(start_tile)
-	
 	while(open_nodes.size() > 0):
 		var lowest_cost_node = open_nodes[0]
 		for node in open_nodes:

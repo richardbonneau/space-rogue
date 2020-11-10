@@ -35,6 +35,10 @@ material/0 = SubResource( 5 )
 
 [node name="Rays" type="Spatial" parent="."]
 
+[node name="TileOccupied" type="RayCast" parent="Rays"]
+enabled = true
+cast_to = Vector3( 0, 2, 0 )
+
 [node name="North" type="RayCast" parent="Rays"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -1 )
 enabled = true
