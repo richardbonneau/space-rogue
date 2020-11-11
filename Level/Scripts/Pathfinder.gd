@@ -14,6 +14,7 @@ onready var camera = self.get_parent().get_node("CameraHolder").get_child(0)
 onready var entity_is_moving: bool = false
 onready var path_index = 0
 onready var movement_stop_thresold: float = 0.1
+var entity_type
 
 func _process(delta):
 	if entity_is_moving: move_entity(delta)
@@ -29,7 +30,7 @@ func start_moving_entity(destTile):
 	var entity_tile = rounds.get_active_entity().get_current_tile()
 	destination_origin = destTile.get_global_transform().origin
 	
-	path = find_path(entity_tile, destTile)
+	path = find_path(entity_tile, destTile, entity_type)
 	entity_is_moving = true
 
 func move_entity(delta):
@@ -44,7 +45,7 @@ func move_entity(delta):
 	last_entity_rotation = Vector3(0,rounds.get_active_entity().get_rotation().y,0)
 	
 	if distance_to_destination < movement_stop_thresold:
-		player_actions.player_remaining_move -= 1
+		if entity_type == "Player": player_actions.player_remaining_move -= 1
 		#Switch to next node to move to
 		if path_index < path.size() - 1: 
 			path_index+=1
@@ -60,7 +61,7 @@ func _done_moving():
 	rounds.get_active_entity().set_global_transform(destination_tile.get_global_transform())
 	path = null
 	path_index = 0
-	
+	entity_type = null
 	rounds.next_turn()
 
 
@@ -76,8 +77,9 @@ func get_distance(var tile_a, var tile_b):
 		return 14 * dst_x + 10 * (dst_z - dst_x)
 
 
-func find_path(var start_tile, var dest_tile):
-	if get_distance(start_tile,dest_tile) > player_actions.player_max_move * 10: return []
+func find_path(var start_tile, var dest_tile, var type):
+	entity_type = type
+	if entity_type == "Player" and get_distance(start_tile,dest_tile) > player_actions.player_max_move * 10: return []
 	
 	var open_nodes:Array = []
 	var closed_nodes:Array = []

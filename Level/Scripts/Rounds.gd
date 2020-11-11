@@ -26,3 +26,6 @@ func next_turn():
 	turn_order.erase(entity_to_push_back)
 	turn_order.append(entity_to_push_back)
 	portrait_order.rearrange_portrait_order()
+	
+	if turn_order[0].type == "Enemy":
+		turn_order[0].get_node("EnemyAi").ai_start_turn()

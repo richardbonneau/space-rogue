@@ -36,7 +36,7 @@ func _input(event):
 			current_focused_node = hovered_node
 			
 			var moving_entity_node = rounds.get_active_entity().get_current_tile()
-			path = pathfinder.find_path(moving_entity_node,hovered_node)
+			path = pathfinder.find_path(moving_entity_node,hovered_node, "Player")
 			moving_entity_node.get_node("Highlight").visible = true
 			for tile in path:
 				tile.get_node("Highlight").visible = true
