@@ -16,8 +16,13 @@ func _ready():
 	var animation_player_instance = animation_player.instance()
 	self.add_child(animation_player_instance)
 	
-	add_to_turn_order()
+	if type == "Enemy":
+		var enemy_ai = load('res://Entities/EnemyAi.tscn')
+		var enemy_ai_instance = enemy_ai.instance()
+		self.add_child(enemy_ai_instance)
 	
+	add_to_turn_order()
+
 
 func _process(delta):
 	pass
@@ -26,7 +31,12 @@ func get_current_tile():
 	if $CurrentTile.is_colliding():
 		current_tile = $CurrentTile.get_collider()
 		return current_tile
-	
+
+func mark_current_tile_as_occupied():
+	self.get_current_tile().taken = true
+
+func free_occupied_tile():
+	self.get_current_tile().taken = false
 
 func add_to_turn_order():
 	rounds.add_entity_to_list(self)
