@@ -1,5 +1,7 @@
 extends Panel
 
+onready var player_actions = self.get_owner().get_owner().get_node("GameBoard").get_node("PlayerActions")
+
 var drag_position = null
 onready var position_before_drag = self.rect_position
 export var neighbour_push: =0.75
@@ -17,6 +19,7 @@ var target_position: Vector2
 var focus_completed: bool = false
 
 func _ready():
+	print("player_actions ",player_actions)
 	pass
 
 
@@ -31,7 +34,7 @@ func _on_Card_gui_input(event):
 			if state == AboutToBePlayed:
 				state = InPlay
 				var pathfinder = self.get_owner().get_owner().get_node("GameBoard").get_node("Pathfinder")
-				pathfinder.play_card({"type": "move", "value": 1})
+				player_actions.play_card({"type": "move", "value": 1})
 				
 				#TODO: Drag and drop cards directly to the battlefield
 				var parent:Node = self.get_parent()

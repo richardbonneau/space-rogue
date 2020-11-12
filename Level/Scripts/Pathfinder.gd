@@ -19,21 +19,24 @@ var entity_type
 func _process(delta):
 	if entity_is_moving: move_entity(delta)
 
-func play_card(var card_attributes):
-	if card_attributes.type == "move":
-		camera.player_select_tile_for_movement = true
-
-func start_moving_entity(destTile):
+func start_moving_entity(destTile, type):
+	entity_type = type
 	camera.player_select_tile_for_movement = false
 	rounds.get_active_entity().get_node("AnimationPlayer").play("Moving")
 	destination_tile = destTile
 	var entity_tile = rounds.get_active_entity().get_current_tile()
 	destination_origin = destTile.get_global_transform().origin
 	
-	path = find_path(entity_tile, destTile, entity_type)
+	path = find_path(entity_tile, destTile)
+	entity_tile.taken = false
+	destTile.taken = true
 	entity_is_moving = true
 
 func move_entity(delta):
+	if path.size() < 1: 
+		_done_moving()
+		return
+	
 	entity_origin = rounds.get_active_entity().get_global_transform().origin
 	var next_tile_origin = path[path_index].get_global_transform().origin
 	var offset = next_tile_origin  - entity_origin
@@ -62,6 +65,7 @@ func _done_moving():
 	path = null
 	path_index = 0
 	entity_type = null
+	print(" rotation ",rounds.get_active_entity().get_rotation()," transform ",rounds.get_active_entity().get_global_transform().origin)
 	rounds.next_turn()
 
 
@@ -77,10 +81,7 @@ func get_distance(var tile_a, var tile_b):
 		return 14 * dst_x + 10 * (dst_z - dst_x)
 
 
-func find_path(var start_tile, var dest_tile, var type):
-	entity_type = type
-	if entity_type == "Player" and get_distance(start_tile,dest_tile) > player_actions.player_max_move * 10: return []
-	
+func find_path(var start_tile, var dest_tile):
 	var open_nodes:Array = []
 	var closed_nodes:Array = []
 	open_nodes.append(start_tile)

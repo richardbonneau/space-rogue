@@ -254,12 +254,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -1 )
 [node name="Tile77" parent="Tiles" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -1 )
 
-[node name="Tile78" parent="Tiles" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.25, -1 )
-
-[node name="Tile79" parent="Tiles" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.25, -1 )
-
 [node name="Tile80" parent="Tiles" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -1 )
 
@@ -291,10 +285,16 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1, -2 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, -2 )
 
 [node name="Tile90" parent="Tiles" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.5, -2 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1, -2 )
 
 [node name="Tile91" parent="Tiles" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.25, -2 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.5, -2 )
+
+[node name="Tile133" parent="Tiles" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.5, -1 )
+
+[node name="Tile134" parent="Tiles" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.5, -1 )
 
 [node name="Tile92" parent="Tiles" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -2 )
@@ -327,7 +327,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1, -3 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, -3 )
 
 [node name="Tile102" parent="Tiles" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.5, -3 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1, -3 )
 
 [node name="Tile103" parent="Tiles" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.5, -3 )
@@ -363,7 +363,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1, -4 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, -4 )
 
 [node name="Tile114" parent="Tiles" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.5, -4 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1, -4 )
 
 [node name="Tile115" parent="Tiles" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.5, -4 )

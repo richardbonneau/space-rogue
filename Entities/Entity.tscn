@@ -8,4 +8,4 @@ type = "Player"
 
 [node name="CurrentTile" type="RayCast" parent="."]
 enabled = true
-cast_to = Vector3( 0, -1.1, 0 )
+cast_to = Vector3( 0, -2, 0 )

@@ -51,11 +51,3 @@ func _on_Button_pressed():
 	$Container.add_child(new_card)
 	reorganize_hand()
 
-
-
-func _on_Hand_mouse_entered():
-	print("_on_Hand_mouse_entered")
-
-
-func _on_Container_mouse_entered():
-	print("_on_Container_mouse_entered")
