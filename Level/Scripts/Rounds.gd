@@ -32,6 +32,7 @@ func get_all_entities_turn_order():
 		print("rounds ",entity.get_current_tile())
 
 func next_turn():
+	yield(get_tree().create_timer(.5), "timeout")
 	var entity_to_push_back = turn_order[0]
 	turn_order.erase(entity_to_push_back)
 	turn_order.append(entity_to_push_back)

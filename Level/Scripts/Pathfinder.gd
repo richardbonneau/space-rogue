@@ -28,6 +28,7 @@ func start_moving_entity(destTile, type):
 	destination_origin = destTile.get_global_transform().origin
 	
 	path = find_path(entity_tile, destTile)
+	print(destTile.taken," ",entity_tile.taken)
 	entity_tile.taken = false
 	destTile.taken = true
 	entity_is_moving = true
@@ -45,7 +46,7 @@ func move_entity(delta):
 	rounds.get_active_entity().look_at(next_tile_origin, Vector3(0,1,0))
 	rounds.get_active_entity().move_and_slide(offset.normalized() * move_speed * delta)
 	
-	last_entity_rotation = Vector3(0,rounds.get_active_entity().get_rotation().y,0)
+	last_entity_rotation = rounds.get_active_entity().get_rotation()
 	
 	if distance_to_destination < movement_stop_thresold:
 		if entity_type == "Player": player_actions.player_remaining_move -= 1
@@ -59,13 +60,14 @@ func _done_moving():
 	camera.player_select_tile_for_movement = false
 	camera.clear_highlighted_path()
 	rounds.get_active_entity().get_node("AnimationPlayer").play("Idle")
-	rounds.get_active_entity().set_rotation(last_entity_rotation)
+	rounds.get_active_entity().set_rotation(Vector3(0,last_entity_rotation.y,0))
+	print("last_entity_rotation ",last_entity_rotation)
 	entity_is_moving = false
 	rounds.get_active_entity().set_global_transform(destination_tile.get_global_transform())
 	path = null
 	path_index = 0
 	entity_type = null
-	print(" rotation ",rounds.get_active_entity().get_rotation()," transform ",rounds.get_active_entity().get_global_transform().origin)
+	
 	rounds.next_turn()
 
 

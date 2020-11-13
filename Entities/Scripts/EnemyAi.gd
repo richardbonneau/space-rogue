@@ -23,7 +23,7 @@ func ai_start_turn():
 	var shortest_path_size = 9999
 	var tile_to_move_to
 	for tile in player_node_neighbours:
-		
+		if tile.taken: continue
 		var path = pathfinder.find_path(current_node,tile)
 		var path_size = path.size()
 		if path_size < shortest_path_size: 
