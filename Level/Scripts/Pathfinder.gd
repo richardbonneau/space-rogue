@@ -6,6 +6,8 @@ var last_entity_rotation
 var entity_origin
 var destination_origin
 var active_entity_type
+var last_tile
+var next_tile
 
 onready var game_board = get_owner()
 onready var rounds = game_board.get_node("Rounds")
@@ -15,6 +17,7 @@ onready var camera = self.get_parent().get_node("CameraHolder").get_child(0)
 onready var entity_is_moving: bool = false
 onready var path_index = 0
 onready var movement_stop_thresold: float = 0.1
+onready var move_speed = 500
 
 
 func _process(delta):
@@ -29,6 +32,8 @@ func start_moving_entity(destTile, type):
 	destination_origin = destTile.get_global_transform().origin
 	
 	path = find_path(entity_tile, destTile)
+	last_tile = entity_tile
+	next_tile = entity_tile
 	entity_tile.taken = false
 	destTile.taken = true
 	entity_is_moving = true
@@ -39,17 +44,21 @@ func move_entity(delta):
 		return
 	
 	entity_origin = rounds.get_active_entity().get_global_transform().origin
-	var next_tile_origin = path[path_index].get_global_transform().origin
+	next_tile = path[path_index]
+	var next_tile_origin = next_tile.get_global_transform().origin
+	var this_move_cost = self.get_distance(last_tile,next_tile)
+	print(last_tile.get_global_transform().origin,next_tile.get_global_transform().origin)
 	var offset = next_tile_origin  - entity_origin
 	var distance_to_destination = offset.length()
-	var move_speed = 500
+
 	rounds.get_active_entity().look_at(next_tile_origin, Vector3(0,1,0))
 	rounds.get_active_entity().move_and_slide(offset.normalized() * move_speed * delta)
 	
 	last_entity_rotation = rounds.get_active_entity().get_rotation()
-	
 	if distance_to_destination < movement_stop_thresold:
-		if active_entity_type == "Player": player_actions.player_remaining_move -= 1
+		last_tile = next_tile
+		next_tile = path[path_index]
+		if active_entity_type == "Player": player_actions.player_remaining_move -= this_move_cost
 		#Switch to next node to move to
 		if path_index < path.size() - 1: 
 			path_index+=1
@@ -66,7 +75,6 @@ func _done_moving():
 	path = null
 	path_index = 0
 	active_entity_type = null
-
 
 func get_distance(var tile_a, var tile_b):
 	var tile_a_origin = tile_a.get_global_transform().origin

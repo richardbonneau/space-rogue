@@ -42,12 +42,16 @@ func _input(event):
 			var moving_entity_node = rounds.get_active_entity().get_current_tile()
 			path = pathfinder.find_path(moving_entity_node,hovered_node)
 			
+			
 			moving_entity_node.get_node("Highlight").visible = true
 			player_can_move_to_selected_location = true
-			for i in path.size():
-				var highlight = path[i].get_node("Highlight")
+			
+			for tile in path:
+				var distance = pathfinder.get_distance(moving_entity_node,tile)
+				var highlight = tile.get_node("Highlight")
 				highlight.visible = true
-				if i < player_actions.player_remaining_move:
+				
+				if distance < player_actions.player_remaining_move:
 					highlight.set_material_override(accessible_tile_mat)
 				else: 
 					player_can_move_to_selected_location = false
