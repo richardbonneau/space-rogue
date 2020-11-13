@@ -68,7 +68,7 @@ func _done_moving():
 	path_index = 0
 	entity_type = null
 	
-	rounds.next_turn()
+	#rounds.next_turn()
 
 
 func get_distance(var tile_a, var tile_b):
