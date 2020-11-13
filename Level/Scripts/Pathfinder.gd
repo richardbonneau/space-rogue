@@ -43,11 +43,11 @@ func move_entity(delta):
 		_done_moving()
 		return
 	
+	#REFACTOR: some of these variables could probably be only set once in a while in the following if statement, instead of every frame
 	entity_origin = rounds.get_active_entity().get_global_transform().origin
 	next_tile = path[path_index]
 	var next_tile_origin = next_tile.get_global_transform().origin
 	var this_move_cost = self.get_distance(last_tile,next_tile)
-	print(last_tile.get_global_transform().origin,next_tile.get_global_transform().origin)
 	var offset = next_tile_origin  - entity_origin
 	var distance_to_destination = offset.length()
 
