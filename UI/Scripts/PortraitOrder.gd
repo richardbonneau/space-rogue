@@ -5,26 +5,12 @@ var dependencies_gotten = false
 export var active_entity_size = 60
 export var inactive_entities_size = 80
 
-var rounds
-var portrait
-var alien 
-var scientist 
-
-func get_dependencies():
-	if !dependencies_gotten:
-		if !rounds: rounds = self.get_owner().get_node("GameBoard").get_node("Rounds")
-		if !portrait: portrait = load('res://UI/Portrait.tscn')
-		if !alien: alien = load('res://Assets/Sprites/Alien.png')
-		if !scientist: scientist = load('res://Assets/Sprites/Scientist.png')
-		dependencies_gotten = true
-
-func _ready():
-	get_dependencies()
-	change_boxes_size()
-	
+onready var rounds = self.get_owner().get_node("GameBoard").get_node("Rounds")
+onready var portrait = load('res://UI/Portrait.tscn')
+onready var alien  = load('res://Assets/Sprites/Alien.png')
+onready var scientist  = load('res://Assets/Sprites/Scientist.png')
 
 func rearrange_portrait_order():
-	get_dependencies()
 	for child in self.get_children():
 		self.remove_child(child)
 		child.queue_free()
@@ -47,11 +33,8 @@ func add_portrait_to_turn_order(var type):
 	self.add_child(portrait_instance)
 
 
-
-
-
 func remove_portrait_from_turn_order():
-	#TODO:
+	#TODO: when an entity dies, remove it from the portraits
 	pass
 
 func change_boxes_size():

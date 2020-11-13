@@ -29,7 +29,8 @@ func _on_Card_gui_input(event):
 		else: 
 			drag_position = null
 			self.rect_position = position_before_drag
-			if state == AboutToBePlayed:
+			if state == AboutToBePlayed and player_actions.player_remaining_cards > 0:
+				player_actions.player_remaining_cards -= 1
 				state = InPlay
 				var pathfinder = self.get_owner().get_owner().get_node("GameBoard").get_node("Pathfinder")
 				player_actions.play_card({"type": "move", "value": 1})
@@ -39,6 +40,10 @@ func _on_Card_gui_input(event):
 				parent.remove_child(self)
 				parent.get_parent().reorganize_hand()
 				self.queue_free()
+			else:
+				pass
+				#Message that says : Cant play any more cards this turn
+				
 	
 	if event is InputEventMouseMotion and drag_position:
 		rect_global_position = get_global_mouse_position() - drag_position
