@@ -6,7 +6,6 @@ var held_object = null
 onready var card = load("res://UI/Card.tscn")
 var card_width: float
 
-
 func _ready():
 	var temp_card = card.instance()
 	card_width = temp_card.get_size().x
@@ -15,8 +14,6 @@ func _ready():
 	ready_to_resize = true
 	
 	reorganize_hand()
-	
-
 
 func reorganize_hand():
 	var cards_in_hand:Array = $Container.get_children()
@@ -41,13 +38,10 @@ func reorganize_hand():
 		
 		cards_in_hand[i].set_position(Vector2((card_position_x) + distance_to_cover_to_get_to_middle ,0))
 
-
 func _on_ViewPort_resized():
 	if ready_to_resize : reorganize_hand()
-
 
 func _on_Button_pressed():
 	var new_card = card.instance()
 	$Container.add_child(new_card)
 	reorganize_hand()
-

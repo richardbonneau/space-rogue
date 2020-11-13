@@ -4,6 +4,7 @@ onready var turn_order = []
 onready var portrait_order = self.get_owner().get_owner().get_node("PortraitOrder")
 onready var entities = self.get_owner().get_node("Entities")
 onready var camera = self.get_owner().get_node("CameraHolder").get_child(0)
+onready var player_actions = self.get_owner().get_node("PlayerActions")
 
 onready var initial_tile_check = false
 
@@ -38,5 +39,6 @@ func next_turn():
 	
 	if turn_order[0].type == "Player":
 		camera.player_select_tile_for_movement = true
+		player_actions.player_remaining_move = player_actions.player_max_move
 	elif turn_order[0].type == "Enemy":
 		turn_order[0].get_node("EnemyAi").ai_start_turn()

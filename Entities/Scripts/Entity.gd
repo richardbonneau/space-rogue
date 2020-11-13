@@ -23,7 +23,6 @@ func _ready():
 	
 	add_to_turn_order()
 
-
 func _process(delta):
 	pass
 
@@ -41,5 +40,3 @@ func free_occupied_tile():
 func add_to_turn_order():
 	rounds.add_entity_to_list(self)
 	portrait_order.rearrange_portrait_order()
-
-

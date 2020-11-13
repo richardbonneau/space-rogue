@@ -1,6 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Level/Scripts/Tile.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Materials/TileAccessible.tres" type="Material" id=2]
 
 [sub_resource type="CubeMesh" id=1]
 
@@ -11,9 +12,6 @@ albedo_color = Color( 0.0470588, 0.121569, 0.184314, 1 )
 extents = Vector3( 0.511914, 0.161641, 1 )
 
 [sub_resource type="PlaneMesh" id=4]
-
-[sub_resource type="SpatialMaterial" id=5]
-albedo_color = Color( 0.733333, 0.901961, 1, 1 )
 
 [node name="Tile" type="StaticBody"]
 script = ExtResource( 1 )
@@ -31,7 +29,7 @@ shape = SubResource( 3 )
 transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0.001, 0 )
 visible = false
 mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+material/0 = ExtResource( 2 )
 
 [node name="Rays" type="Spatial" parent="."]
 

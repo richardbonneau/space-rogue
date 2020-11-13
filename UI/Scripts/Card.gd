@@ -19,9 +19,7 @@ var target_position: Vector2
 var focus_completed: bool = false
 
 func _ready():
-	print("player_actions ",player_actions)
 	pass
-
 
 func _on_Card_gui_input(event):
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT:
@@ -56,12 +54,10 @@ func _on_Card_gui_input(event):
 			state = InHand
 			
 
-
 func _on_Card_mouse_entered():
 	var node_new_style = self.get_stylebox("panel").duplicate()
 	node_new_style.set_border_color(Color("fff"))
 	self.add_stylebox_override("panel", node_new_style)
-
 
 func _on_Card_mouse_exited():
 	var node_new_style = self.get_stylebox("panel").duplicate()

@@ -2,7 +2,13 @@ extends Camera
 
 onready var game_board = self.get_owner().get_owner().get_node("GameBoard")
 onready var pathfinder = game_board.get_node("Pathfinder")
+onready var player_actions = game_board.get_node("PlayerActions")
 onready var rounds = game_board.get_node("Rounds")
+
+onready var accessible_tile_mat = load('res://Assets/Materials/TileAccessible.tres')
+onready var not_accessible_tile_mat = load('res://Assets/Materials/TileNotAccessible.tres')
+
+onready var player_can_move_to_selected_location = true
 
 var player_select_tile_for_movement = false
 var current_focused_node
@@ -11,12 +17,10 @@ var path:Array
 func _ready():
 	pass 
 
-
 func clear_highlighted_path():
 	for tile in game_board.get_node("Tiles").get_children():
 		var highlight = tile.get_node("Highlight")
 		if highlight : highlight.visible = false
-
 
 func _input(event):
 	if player_select_tile_for_movement and rounds.turn_order.size() > 0:
@@ -39,13 +43,15 @@ func _input(event):
 			path = pathfinder.find_path(moving_entity_node,hovered_node)
 			
 			moving_entity_node.get_node("Highlight").visible = true
-			for tile in path:
-				tile.get_node("Highlight").visible = true
+			player_can_move_to_selected_location = true
+			for i in path.size():
+				var highlight = path[i].get_node("Highlight")
+				highlight.visible = true
+				if i < player_actions.player_remaining_move:
+					highlight.set_material_override(accessible_tile_mat)
+				else: 
+					player_can_move_to_selected_location = false
+					highlight.set_material_override(not_accessible_tile_mat)
 		
-		if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.is_pressed():
+		if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.is_pressed() and player_can_move_to_selected_location:
 			if hovered_node: pathfinder.start_moving_entity(hovered_node, "Player")
-
-
-
-
-

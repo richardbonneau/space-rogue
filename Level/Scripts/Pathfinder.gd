@@ -5,6 +5,7 @@ var path
 var last_entity_rotation
 var entity_origin
 var destination_origin
+var active_entity_type
 
 onready var game_board = get_owner()
 onready var rounds = game_board.get_node("Rounds")
@@ -14,13 +15,13 @@ onready var camera = self.get_parent().get_node("CameraHolder").get_child(0)
 onready var entity_is_moving: bool = false
 onready var path_index = 0
 onready var movement_stop_thresold: float = 0.1
-var entity_type
+
 
 func _process(delta):
 	if entity_is_moving: move_entity(delta)
 
 func start_moving_entity(destTile, type):
-	entity_type = type
+	active_entity_type = type
 	camera.player_select_tile_for_movement = false
 	rounds.get_active_entity().get_node("AnimationPlayer").play("Moving")
 	destination_tile = destTile
@@ -28,7 +29,6 @@ func start_moving_entity(destTile, type):
 	destination_origin = destTile.get_global_transform().origin
 	
 	path = find_path(entity_tile, destTile)
-	print(destTile.taken," ",entity_tile.taken)
 	entity_tile.taken = false
 	destTile.taken = true
 	entity_is_moving = true
@@ -49,7 +49,7 @@ func move_entity(delta):
 	last_entity_rotation = rounds.get_active_entity().get_rotation()
 	
 	if distance_to_destination < movement_stop_thresold:
-		if entity_type == "Player": player_actions.player_remaining_move -= 1
+		if active_entity_type == "Player": player_actions.player_remaining_move -= 1
 		#Switch to next node to move to
 		if path_index < path.size() - 1: 
 			path_index+=1
@@ -61,14 +61,11 @@ func _done_moving():
 	camera.clear_highlighted_path()
 	rounds.get_active_entity().get_node("AnimationPlayer").play("Idle")
 	rounds.get_active_entity().set_rotation(Vector3(0,last_entity_rotation.y,0))
-	print("last_entity_rotation ",last_entity_rotation)
 	entity_is_moving = false
 	rounds.get_active_entity().set_global_transform(destination_tile.get_global_transform())
 	path = null
 	path_index = 0
-	entity_type = null
-	
-	#rounds.next_turn()
+	active_entity_type = null
 
 
 func get_distance(var tile_a, var tile_b):
@@ -81,7 +78,6 @@ func get_distance(var tile_a, var tile_b):
 		return 14 * dst_z + 10 * (dst_x - dst_z)
 	else:
 		return 14 * dst_x + 10 * (dst_z - dst_x)
-
 
 func find_path(var start_tile, var dest_tile):
 	var open_nodes:Array = []
