@@ -101,7 +101,7 @@ func find_path(var start_tile, var dest_tile):
 		closed_nodes.append(lowest_cost_node)
 		
 		if lowest_cost_node == dest_tile:
-			var path:Array = []
+			path = []
 			var current_node = dest_tile
 			while current_node != start_tile:
 				path.append(current_node)

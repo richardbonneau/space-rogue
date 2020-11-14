@@ -48,5 +48,6 @@ func next_turn():
 	if turn_order[0].type == "Player":
 		camera.player_select_tile_for_movement = true
 		player_actions.player_remaining_move = player_actions.player_max_move
+		player_actions.player_remaining_cards = player_actions.player_max_cards
 	elif turn_order[0].type == "Enemy":
 		turn_order[0].get_node("EnemyAi").ai_start_turn()

@@ -20,6 +20,7 @@ func _ready():
 func clear_highlighted_path():
 	for tile in game_board.get_node("Tiles").get_children():
 		var highlight = tile.get_node("Highlight")
+		#TODO: why does sometimes we get a tile with no children?
 		if highlight : highlight.visible = false
 
 func _input(event):
