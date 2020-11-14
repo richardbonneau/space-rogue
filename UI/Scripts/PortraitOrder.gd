@@ -7,9 +7,9 @@ export var inactive_entities_size = 80
 
 onready var rounds = self.get_owner().get_node("GameBoard").get_node("Rounds")
 onready var portrait = load('res://UI/Portrait.tscn')
-onready var alien  = load('res://Assets/Sprites/alien.png')
-onready var scientist  = load('res://Assets/Sprites/scientist.png')
-onready var bot  = load('res://Assets/Sprites/bot.png')
+onready var alien  = load('res://Assets/Sprites/Portraits/alien.png')
+onready var scientist  = load('res://Assets/Sprites/Portraits/scientist.png')
+onready var bot  = load('res://Assets/Sprites/Portraits/bot.png')
 
 func rearrange_portrait_order():
 	for child in self.get_children():

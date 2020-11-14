@@ -1,16 +1,18 @@
 [gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://UI/Card.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Assets/Sprites/burning-card-tp.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Sprites/UiIcons/burning-card-tp.png" type="Texture" id=2]
 [ext_resource path="res://UI/Scripts/Hand.gd" type="Script" id=3]
-[ext_resource path="res://Assets/Sprites/discard-card-tp.png" type="Texture" id=4]
-[ext_resource path="res://Assets/Sprites/boot.png" type="Texture" id=5]
-[ext_resource path="res://Assets/Sprites/energy.png" type="Texture" id=6]
-[ext_resource path="res://Assets/Sprites/lozange.png" type="Texture" id=7]
-[ext_resource path="res://Assets/Sprites/pendant.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Sprites/UiIcons/discard-card-tp.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Sprites/UiIcons/boot.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Sprites/UiIcons/energy.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Sprites/UiIcons/lozange.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Sprites/UiIcons/pendant.png" type="Texture" id=8]
 [ext_resource path="res://UI/Scripts/MovementLabel.gd" type="Script" id=9]
 [ext_resource path="res://UI/Scripts/EndTurnButton.gd" type="Script" id=10]
 [ext_resource path="res://UI/Scripts/EnergyLabel.gd" type="Script" id=11]
+
+
 
 [node name="Hand" type="Control"]
 anchor_right = 1.018
