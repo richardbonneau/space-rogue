@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/boy-beach.fbx-a89b02f4623f46cd9f11b6a067ff56cf.scn"
+path="res://.import/boy-beach.fbx-368279629447e8df5594deafb4198212.scn"
 
 [deps]
 
-source_file="res://Assets/Meshes/boy-beach.fbx"
-dest_files=[ "res://.import/boy-beach.fbx-a89b02f4623f46cd9f11b6a067ff56cf.scn" ]
+source_file="res://Assets/Meshes/Alien/boy-beach.fbx"
+dest_files=[ "res://.import/boy-beach.fbx-368279629447e8df5594deafb4198212.scn" ]
 
 [params]
 

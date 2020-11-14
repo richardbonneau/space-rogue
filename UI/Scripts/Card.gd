@@ -32,7 +32,7 @@ func _on_Card_gui_input(event):
 			if state == AboutToBePlayed and player_actions.player_remaining_cards > 0:
 				player_actions.player_remaining_cards -= 1
 				state = InPlay
-				var pathfinder = self.get_owner().get_owner().get_node("GameBoard").get_node("Pathfinder")
+				
 				player_actions.play_card({"type": "move", "value": 1})
 				
 				#TODO: Drag and drop cards directly to the battlefield

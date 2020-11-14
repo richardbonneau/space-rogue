@@ -7,8 +7,8 @@ extends Node
 
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
-	self.get_owner().start()
+#func _ready():
+#	self.get_owner().start()
 
 
 

@@ -7,8 +7,9 @@ export var inactive_entities_size = 80
 
 onready var rounds = self.get_owner().get_node("GameBoard").get_node("Rounds")
 onready var portrait = load('res://UI/Portrait.tscn')
-onready var alien  = load('res://Assets/Sprites/Alien.png')
-onready var scientist  = load('res://Assets/Sprites/Scientist.png')
+onready var alien  = load('res://Assets/Sprites/alien.png')
+onready var scientist  = load('res://Assets/Sprites/scientist.png')
+onready var bot  = load('res://Assets/Sprites/bot.png')
 
 func rearrange_portrait_order():
 	for child in self.get_children():
@@ -28,6 +29,7 @@ func add_portrait_to_turn_order(var type):
 	
 	if type == "Player": image = alien
 	elif type == "Enemy": image = scientist
+	elif type == "Ally": image = bot
 	
 	portrait_instance.set_texture(image)
 	self.add_child(portrait_instance)

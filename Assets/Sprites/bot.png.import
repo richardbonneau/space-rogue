@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/alien.png-c15cf503ba282b3cd1aef0114cf4a241.stex"
+path="res://.import/bot.png-4363f79710116a2d3baa128f8a705755.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/alien.png"
-dest_files=[ "res://.import/alien.png-c15cf503ba282b3cd1aef0114cf4a241.stex" ]
+source_file="res://Assets/Sprites/bot.png"
+dest_files=[ "res://.import/bot.png-4363f79710116a2d3baa128f8a705755.stex" ]
 
 [params]
 

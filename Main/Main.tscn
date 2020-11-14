@@ -22,6 +22,10 @@ margin_bottom = 124.0
 [node name="Menus" parent="." instance=ExtResource( 7 )]
 
 [node name="Hand" parent="." instance=ExtResource( 2 )]
+margin_left = 1.49829
+margin_top = 1.85822
+margin_right = -23.0897
+margin_bottom = -0.141785
 
 [node name="AddCardDebug" parent="." instance=ExtResource( 4 )]
 visible = false

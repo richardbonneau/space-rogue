@@ -24,8 +24,7 @@ func _ready():
 	
 	add_to_turn_order()
 
-func _process(delta):
-	pass
+
 
 func get_current_tile():
 	if $CurrentTile.is_colliding():
