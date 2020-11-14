@@ -1,13 +1,16 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
+[ext_resource path="res://Main/Scripts/StartGame.gd" type="Script" id=1]
 [ext_resource path="res://UI/Hand.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Level/GameBoard.tscn" type="PackedScene" id=3]
 [ext_resource path="res://UI/Debug.tscn" type="PackedScene" id=4]
 [ext_resource path="res://UI/PortraitOrder.tscn" type="PackedScene" id=5]
 [ext_resource path="res://UI/Ressources.tscn" type="PackedScene" id=6]
 [ext_resource path="res://UI/Menus.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Main/Scripts/Main.gd" type="Script" id=8]
 
 [node name="Main" type="Node"]
+script = ExtResource( 8 )
 
 [node name="GameBoard" parent="." instance=ExtResource( 3 )]
 
@@ -22,3 +25,6 @@ margin_bottom = 124.0
 
 [node name="AddCardDebug" parent="." instance=ExtResource( 4 )]
 visible = false
+
+[node name="StartGame" type="Node" parent="."]
+script = ExtResource( 1 )

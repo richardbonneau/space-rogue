@@ -1,9 +1,9 @@
 extends Spatial
 
 onready var rounds = self.get_owner().get_node("Rounds")
-onready var portrait_order = self.get_owner().get_owner().get_node("PortraitOrder")
 
-export(String,"Enemy", "Player") var type
+onready var initiative = 50
+export(String,"Enemy", "Player", "Ally") var type
 var current_tile
 
 func _ready():
@@ -17,6 +17,7 @@ func _ready():
 	self.add_child(animation_player_instance)
 	
 	if type == "Enemy":
+		initiative = 60
 		var enemy_ai = load('res://Entities/EnemyAi.tscn')
 		var enemy_ai_instance = enemy_ai.instance()
 		self.add_child(enemy_ai_instance)
@@ -39,4 +40,3 @@ func free_occupied_tile():
 
 func add_to_turn_order():
 	rounds.add_entity_to_list(self)
-	portrait_order.rearrange_portrait_order()

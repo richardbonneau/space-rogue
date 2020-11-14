@@ -8,9 +8,15 @@ onready var player_actions = self.get_owner().get_node("PlayerActions")
 
 onready var initial_tile_check = false
 
+class MyCustomSorter:
+	static func custom_sorter(a,b):
+		if a.initiative < b.initiative:
+			return true
+		else : return false
+
 func _ready():
-	sort_turn_order()
 	#get_all_entities_turn_order()
+	pass
 
 func _process(delta):
 	if !initial_tile_check:
@@ -25,7 +31,9 @@ func add_entity_to_list(var entity):
 	turn_order.append(entity)
 
 func sort_turn_order():
-	pass
+	print("bef ",turn_order)
+	turn_order.sort_custom(MyCustomSorter,"custom_sorter")
+	print("aft " , turn_order)
 
 func get_all_entities_turn_order():
 	for entity in entities.get_children():
