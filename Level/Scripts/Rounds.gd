@@ -14,11 +14,8 @@ class MyCustomSorter:
 			return true
 		else : return false
 
-func _ready():
-	#get_all_entities_turn_order()
-	pass
 
-func _process(delta):
+func _process(_delta):
 	if !initial_tile_check:
 		for entity in entities.get_children():
 			entity.mark_current_tile_as_occupied()
@@ -31,9 +28,7 @@ func add_entity_to_list(var entity):
 	turn_order.append(entity)
 
 func sort_turn_order():
-	print("bef ",turn_order)
 	turn_order.sort_custom(MyCustomSorter,"custom_sorter")
-	print("aft " , turn_order)
 
 func get_all_entities_turn_order():
 	for entity in entities.get_children():
